@@ -29,8 +29,8 @@ if (import.meta.env.VITE_BASE_PATH === '/nixos-router/') {
   // Add Plausible script
   const script = document.createElement('script');
   script.defer = true;
-  script.setAttribute('data-domain', 'beardedtek.github.io');
-  script.src = 'https://plausible.beardedtek.org/js/script.file-downloads.hash.outbound-links.js';
+  script.setAttribute('data-domain', 'nixrtr.github.io');
+  script.src = 'https://plausible.nixrtr.org/js/script.file-downloads.hash.outbound-links.js';
   document.head.appendChild(script);
 }
 

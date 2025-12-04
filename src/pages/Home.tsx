@@ -33,8 +33,8 @@ Welcome to the NixOS Router documentation. This guide will help you install, con
 
 ## Need Help?
 
-- Check the [GitHub Issues](https://github.com/BeardedTek/nixos-router/issues)
-- Review the [GitHub Repository](https://github.com/BeardedTek/nixos-router)
+- Check the [GitHub Issues](https://github.com/NixRTR/nixos-router/issues)
+- Review the [GitHub Repository](https://github.com/NixRTR/nixos-router)
 `;
 
 interface ScreenshotManifest {

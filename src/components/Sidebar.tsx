@@ -16,7 +16,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     // Fetch GitHub stats on mount
     const fetchGitHubStats = async () => {
       try {
-        const response = await fetch('https://api.github.com/repos/BeardedTek/nixos-router');
+        const response = await fetch('https://api.github.com/repos/NixRTR/nixos-router');
         if (response.ok) {
           const data = await response.json();
           setGitHubStats({
@@ -151,7 +151,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             <ul className="space-y-2 font-medium">
               <li>
                 <a
-                  href="https://github.com/BeardedTek/nixos-router"
+                  href="https://github.com/NixRTR/nixos-router"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => {
@@ -172,7 +172,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               </li>
               <li>
                 <a
-                  href="https://github.com/BeardedTek/nixos-router/issues"
+                  href="https://github.com/NixRTR/nixos-router/issues"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => {
