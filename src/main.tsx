@@ -19,8 +19,8 @@ import App from './App.tsx'
 })();
 
 // Add Plausible analytics - only for GitHub Pages, not for router's webui
-// GitHub Pages builds use VITE_BASE_PATH=/nixos-router/, local builds use /docs/
-if (import.meta.env.VITE_BASE_PATH === '/nixos-router/') {
+// GitHub Pages builds use VITE_BASE_PATH=/docs/, local builds use /docs/
+if (import.meta.env.VITE_BASE_PATH === '/docs/') {
   // Initialize plausible queue
   (window as any).plausible = (window as any).plausible || function() { 
     ((window as any).plausible.q = (window as any).plausible.q || []).push(arguments) 

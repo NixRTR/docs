@@ -1,12 +1,12 @@
 // Copy index.html to 404.html for GitHub Pages client-side routing
-// Only do this when building for GitHub Pages (VITE_BASE_PATH=/nixos-router/)
+// Only do this when building for GitHub Pages (VITE_BASE_PATH=/docs/)
 // Also create .nojekyll file to disable Jekyll processing
 import { copyFileSync, writeFileSync } from 'fs';
 
 const basePath = process.env.VITE_BASE_PATH || '';
 
 // Only create 404.html for GitHub Pages builds
-if (basePath === '/nixos-router/') {
+if (basePath === '/docs/') {
   copyFileSync('dist/index.html', 'dist/404.html');
   console.log('Copied index.html to 404.html for GitHub Pages');
   

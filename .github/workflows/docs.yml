@@ -40,7 +40,7 @@ jobs:
 
       - name: Build React docs
         env:
-          VITE_BASE_PATH: /nixos-router/
+          VITE_BASE_PATH: /docs/
         run: npm run build
 
       - name: Upload artifact
