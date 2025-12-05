@@ -1,4 +1,4 @@
-name: Build and Commit dist/
+name: Build and Commit dist/ into repository
 
 on:
   push:
