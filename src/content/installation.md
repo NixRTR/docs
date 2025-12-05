@@ -1,3 +1,4 @@
+
 # Installation
 
 This guide covers installing the NixOS Router on your hardware.
