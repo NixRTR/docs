@@ -41,7 +41,6 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       path: '/installation',
       label: 'Installation',
       children: [
-        { path: '/installation', label: 'Overview' },
         { path: '/installation/nixos-router', label: 'NixOS Router' },
         { path: '/installation/webui/manual', label: 'WebUI Manual' },
         { path: '/installation/webui/docker', label: 'WebUI Docker' },
@@ -70,7 +69,6 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       path: '/webui',
       label: 'WebUI',
       children: [
-        { path: '/webui', label: 'Overview' },
         { path: '/webui/login', label: 'Login' },
         { path: '/webui/navigation', label: 'Navigation' },
         { path: '/webui/dashboard', label: 'Dashboard' },
