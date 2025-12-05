@@ -16,7 +16,7 @@ sudo ./install.sh
 
 ### What does it do?
 
-- Downloads, makes executable and runs [\`/scripts/install-router.sh\`](https://github.com/BeardedTek/nixos-router/blob/main/scripts/install-router.sh)
+- Downloads, makes executable and runs [\`/scripts/install-router.sh\`](https://github.com/NixRTR/nixos-router/blob/main/scripts/install-router.sh)
   - Clones this repository
   - Asks for user input with sane defaults to generate your \`router-config.nix\`
   - Builds the system
