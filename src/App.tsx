@@ -5,6 +5,9 @@ import { Layout } from './components/Layout';
 // Lazy load routes for code splitting - reduces initial bundle size
 const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })));
 const Installation = lazy(() => import('./pages/Installation').then(m => ({ default: m.Installation })));
+const InstallationNixOSRouter = lazy(() => import('./pages/InstallationNixOSRouter').then(m => ({ default: m.InstallationNixOSRouter })));
+const InstallationWebUIManual = lazy(() => import('./pages/InstallationWebUIManual').then(m => ({ default: m.InstallationWebUIManual })));
+const InstallationWebUIDocker = lazy(() => import('./pages/InstallationWebUIDocker').then(m => ({ default: m.InstallationWebUIDocker })));
 const Upgrading = lazy(() => import('./pages/Upgrading').then(m => ({ default: m.Upgrading })));
 const Verification = lazy(() => import('./pages/Verification').then(m => ({ default: m.Verification })));
 const Configuration = lazy(() => import('./pages/Configuration').then(m => ({ default: m.Configuration })));
@@ -67,6 +70,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/installation" element={<Installation />} />
+            <Route path="/installation/nixos-router" element={<InstallationNixOSRouter />} />
+            <Route path="/installation/webui/manual" element={<InstallationWebUIManual />} />
+            <Route path="/installation/webui/docker" element={<InstallationWebUIDocker />} />
             <Route path="/upgrading" element={<Upgrading />} />
             <Route path="/verification" element={<Verification />} />
             <Route path="/webui" element={<WebUIOverview />} />

@@ -37,7 +37,16 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
   const menuItems = [
     { path: '/', label: 'Home' },
-    { path: '/installation', label: 'Installation' },
+    {
+      path: '/installation',
+      label: 'Installation',
+      children: [
+        { path: '/installation', label: 'Overview' },
+        { path: '/installation/nixos-router', label: 'NixOS Router' },
+        { path: '/installation/webui/manual', label: 'WebUI Manual' },
+        { path: '/installation/webui/docker', label: 'WebUI Docker' },
+      ],
+    },
     {
       path: '/configuration',
       label: 'Configuration',
