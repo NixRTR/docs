@@ -1,53 +1,8 @@
-import{j as n}from"./ui-vendor-CtbJYEGA.js";import{M as e}from"./MarkdownContent-D-Zi6kKK.js";import"./react-vendor-ZjkKMkft.js";import"./markdown-vendor-D8KYDTzx.js";const t=`
-# Installation
+import{j as n}from"./ui-vendor-CtbJYEGA.js";import{M as e}from"./MarkdownContent-D-Zi6kKK.js";import"./react-vendor-ZjkKMkft.js";import"./markdown-vendor-D8KYDTzx.js";const t=`# WebUI Manual Installation
 
-This guide covers installing the NixOS Router on your hardware.
+This guide covers installing the WebUI manually on other Linux distributions such as Ubuntu, Debian, Fedora, Arch Linux, etc.
 
-## Installing on NixOS (Recommended)
-
-The NixOS Router is designed and optimized for NixOS. For the best experience with full integration, automatic updates, and seamless configuration management, we strongly recommend using NixOS.
-
-### Using the Install Script (Recommended)
-
-Run from a vanilla NixOS installer shell:
-
-**Important:** Please take time to inspect this installer script. It is **never** recommended to blindly run scripts from the internet.
-
-\\\`\\\`\\\`bash
-curl -fsSL https://beard.click/nixos-router > install.sh
-chmod +x install.sh
-sudo ./install.sh
-\\\`\\\`\\\`
-
-### What does it do?
-
-- Downloads, makes executable and runs [\`/scripts/install-router.sh\`](https://github.com/NixRTR/nixos-router/blob/main/scripts/install-router.sh)
-  - Clones this repository
-  - Asks for user input with sane defaults to generate your \`router-config.nix\`
-  - Builds the system
-
-### Using the Custom ISO
-
-**Note:** This script fetches everything via Nix; expect a large download on the first run.
-
-1. Build the ISO:
-
-   \\\`\\\`\\\`bash
-   cd iso
-   ./build-iso.sh
-   \\\`\\\`\\\`
-
-2. Write \`result/iso/*.iso\` to a USB drive.
-
-3. (Optional) Place your \`router-config.nix\` inside the USB \`config/\` folder for unattended installs.
-
-4. Boot the router from USB and follow the menu. Pick install or upgrade.
-
-5. After completion, reboot and remove the USB stick.
-
-## Installing on Other Linux Distributions
-
-**Note:** While the WebUI is designed for NixOS and provides the best experience when integrated with the full NixOS router configuration, the WebUI components (backend and frontend) can be run on other modern Linux distributions such as Ubuntu, Debian, Fedora, Arch Linux, etc.
+**Note:** While the WebUI is designed for NixOS and provides the best experience when integrated with the full NixOS router configuration, the WebUI components (backend and frontend) can be run on other modern Linux distributions.
 
 **Limitations on non-NixOS systems:**
 - No automatic NixOS configuration management
@@ -56,7 +11,7 @@ sudo ./install.sh
 - Manual service setup and configuration
 - Some features may require additional configuration or may not be available
 
-### Prerequisites
+## Prerequisites
 
 - **Python 3.11+** with pip
 - **Node.js 18+** and npm
@@ -65,9 +20,9 @@ sudo ./install.sh
 - **Nginx** or another reverse proxy
 - **Systemd** (for service management)
 
-### Installation Steps
+## Installation Steps
 
-#### 1. Install System Dependencies
+### 1. Install System Dependencies
 
 **Ubuntu/Debian:**
 \\\`\\\`\\\`bash
@@ -88,7 +43,7 @@ sudo pacman -S python python-pip postgresql redis nginx nodejs npm base-devel
 sudo systemctl enable --now postgresql redis
 \\\`\\\`\\\`
 
-#### 2. Set Up PostgreSQL Database
+### 2. Set Up PostgreSQL Database
 
 \\\`\\\`\\\`bash
 # Create database and user
@@ -100,7 +55,7 @@ GRANT ALL PRIVILEGES ON DATABASE router_webui TO router_webui;
 \\EOF
 \\\`\\\`\\\`
 
-#### 3. Clone and Set Up Backend
+### 3. Clone and Set Up Backend
 
 \\\`\\\`\\\`bash
 # Clone the webui repository
@@ -118,7 +73,7 @@ pip install -r requirements.txt
 psql -h localhost -U router_webui -d router_webui -f schema.sql
 \\\`\\\`\\\`
 
-#### 4. Build Frontend
+### 4. Build Frontend
 
 \\\`\\\`\\\`bash
 cd ../frontend
@@ -130,7 +85,7 @@ npm install
 npm run build
 \\\`\\\`\\\`
 
-#### 5. Configure Backend
+### 5. Configure Backend
 
 Create a configuration file or set environment variables:
 
@@ -154,7 +109,7 @@ sudo openssl rand -hex 32 | sudo tee /var/lib/router-webui/jwt-secret
 sudo chmod 600 /var/lib/router-webui/jwt-secret
 \\\`\\\`\\\`
 
-#### 6. Create Systemd Service
+### 6. Create Systemd Service
 
 Create \`/etc/systemd/system/router-webui-backend.service\`:
 
@@ -178,7 +133,7 @@ RestartSec=10s
 WantedBy=multi-user.target
 \\\`\\\`\\\`
 
-#### 7. Configure Nginx
+### 7. Configure Nginx
 
 Create \`/etc/nginx/sites-available/router-webui\`:
 
@@ -226,7 +181,7 @@ sudo nginx -t
 sudo systemctl reload nginx
 \\\`\\\`\\\`
 
-#### 8. Create System User
+### 8. Create System User
 
 \\\`\\\`\\\`bash
 sudo useradd -r -s /bin/false router-webui
@@ -234,7 +189,7 @@ sudo chown -R router-webui:router-webui /var/lib/router-webui
 sudo chown -R router-webui:router-webui /path/to/webui
 \\\`\\\`\\\`
 
-#### 9. Start Services
+### 9. Start Services
 
 \\\`\\\`\\\`bash
 sudo systemctl daemon-reload
@@ -243,13 +198,13 @@ sudo systemctl start router-webui-backend
 sudo systemctl status router-webui-backend
 \\\`\\\`\\\`
 
-#### 10. Access WebUI
+### 10. Access WebUI
 
 Open \`http://your-router-ip:8080\` in your browser.
 
 **Note:** Authentication uses PAM, so you'll need to log in with a system user account. You may need to configure PAM authentication separately depending on your distribution.
 
-### Troubleshooting
+## Troubleshooting
 
 - **Database connection errors**: Verify PostgreSQL is running and credentials are correct
 - **Permission errors**: Ensure the \`router-webui\` user has proper permissions
@@ -257,4 +212,4 @@ Open \`http://your-router-ip:8080\` in your browser.
 - **Frontend not loading**: Verify Nginx configuration and file permissions
 - **Authentication issues**: Ensure PAM is properly configured for your distribution
 
-`;function a(){return n.jsx("div",{className:"p-6 max-w-4xl mx-auto",children:n.jsx("div",{className:"bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6",children:n.jsx(e,{content:t})})})}export{a as Installation};
+`;function a(){return n.jsx("div",{className:"p-6 max-w-4xl mx-auto",children:n.jsx("div",{className:"bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6",children:n.jsx(e,{content:t})})})}export{a as InstallationWebUIManual};
