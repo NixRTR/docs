@@ -12,14 +12,14 @@ This guide covers installing the WebUI using Docker Compose for easier deploymen
 
 1. Create a directory for your Docker Compose setup:
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 mkdir nixrtr-webui
 cd nixrtr-webui
-\\\`\\\`\\\`
+\`\`\`
 
 2. Download the required files:
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 # Download docker-compose.yml
 curl -o docker-compose.yml https://raw.githubusercontent.com/NixRTR/webui/main/docker/docker-compose.yml
 
@@ -28,19 +28,19 @@ curl -o docker-compose.override.yml.example https://raw.githubusercontent.com/Ni
 
 # Download .env.example (if available)
 curl -o .env.example https://raw.githubusercontent.com/NixRTR/webui/main/docker/.env.example
-\\\`\\\`\\\`
+\`\`\`
 
 Or using \`wget\`:
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 wget -O docker-compose.yml https://raw.githubusercontent.com/NixRTR/webui/main/docker/docker-compose.yml
 wget -O docker-compose.override.yml.example https://raw.githubusercontent.com/NixRTR/webui/main/docker/docker-compose.override.yml.example
 wget -O .env.example https://raw.githubusercontent.com/NixRTR/webui/main/docker/.env.example
-\\\`\\\`\\\`
+\`\`\`
 
 3. Set up configuration files:
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 # Copy the example environment file (create .env if .env.example doesn't exist)
 if [ -f .env.example ]; then
   cp .env.example .env
@@ -50,7 +50,7 @@ fi
 
 # (Optional) Copy the override example for custom configuration
 cp docker-compose.override.yml.example docker-compose.override.yml
-\\\`\\\`\\\`
+\`\`\`
 
 4. Edit \`.env\` and configure your settings (database passwords, JWT secret, etc.)
 
@@ -58,15 +58,15 @@ cp docker-compose.override.yml.example docker-compose.override.yml
 
 6. Start the stack (images will be pulled automatically):
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 docker-compose up -d
-\\\`\\\`\\\`
+\`\`\`
 
 Or with Podman:
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 podman-compose up -d
-\\\`\\\`\\\`
+\`\`\`
 
 7. Access the WebUI at \`http://localhost:8080\`
 
@@ -99,20 +99,20 @@ The Docker Compose setup mounts the following host paths (if available):
 
 Copy and edit \`docker-compose.override.yml.example\` to \`docker-compose.override.yml\` for custom configuration:
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 cp docker-compose.override.yml.example docker-compose.override.yml
-\\\`\\\`\\\`
+\`\`\`
 
 Then edit \`docker-compose.override.yml\` to customize services. For example:
 
-\\\`\\\`\\\`yaml
+\`\`\`yaml
 services:
   backend:
     environment:
       - DEBUG=true
     volumes:
       - ./custom-config:/app/config:ro
-\\\`\\\`\\\`
+\`\`\`
 
 ## Services
 
@@ -136,19 +136,19 @@ The \`docker-compose.yml\` file is configured to use these images by default. No
 
 If you need to build images locally (e.g., for development or custom modifications), you'll need to clone the repository:
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 git clone https://github.com/NixRTR/webui.git
 cd webui/docker
 docker-compose build
-\\\`\\\`\\\`
+\`\`\`
 
 Or build individual services:
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 cd webui/docker
 docker-compose build backend
 docker-compose build webui
-\\\`\\\`\\\`
+\`\`\`
 
 **Note**: Building locally requires Node.js and npm to build the frontend and documentation.
 
@@ -156,26 +156,26 @@ docker-compose build webui
 
 ### View Logs
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 # All services
 docker-compose logs -f
 
 # Specific service
 docker-compose logs -f backend
 docker-compose logs -f worker
-\\\`\\\`\\\`
+\`\`\`
 
 ### Check Service Status
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 docker-compose ps
-\\\`\\\`\\\`
+\`\`\`
 
 ### Restart Services
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 docker-compose restart
-\\\`\\\`\\\`
+\`\`\`
 
 ### Database Connection Issues
 
@@ -205,30 +205,30 @@ docker-compose restart
 
 To update to the latest version:
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 # Pull latest images
 docker-compose pull
 
 # Restart services
 docker-compose up -d
-\\\`\\\`\\\`
+\`\`\`
 
 To update the docker-compose.yml file itself, re-download it:
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 curl -o docker-compose.yml https://raw.githubusercontent.com/NixRTR/webui/main/docker/docker-compose.yml
-\\\`\\\`\\\`
+\`\`\`
 
 Or if you cloned the repository for local building:
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 # Pull latest code
 git pull
 
 # Rebuild and restart
 cd docker
 docker-compose up -d --build
-\\\`\\\`\\\`
+\`\`\`
 
 ## Production Considerations
 
