@@ -8,11 +8,11 @@ Run from a vanilla NixOS installer shell:
 
 **Important:** Please take time to inspect this installer script. It is **never** recommended to blindly run scripts from the internet.
 
-\`\`\`bash
+```bash
 curl -fsSL https://beard.click/nixos-router > install.sh
 chmod +x install.sh
 sudo ./install.sh
-\`\`\`
+```
 
 ### What does it do?
 
@@ -27,10 +27,10 @@ sudo ./install.sh
 
 1. Build the ISO:
 
-   \`\`\`bash
+   ```bash
    cd iso
    ./build-iso.sh
-   \`\`\`
+   ```
 
 2. Write `result/iso/*.iso` to a USB drive.
 

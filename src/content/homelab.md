@@ -6,7 +6,7 @@ Configure the homelab network (typically br0, 192.168.2.x).
 
 Configure DHCP for the homelab network:
 
-\`\`\`nix
+```nix
 homelab = {
   dhcp = {
     enable = true;
@@ -15,13 +15,13 @@ homelab = {
     leaseTime = 86400;  # 24 hours
   };
 };
-\`\`\`
+```
 
 ## DNS Configuration
 
 Configure DNS for the homelab network:
 
-\`\`\`nix
+```nix
 homelab = {
   dns = {
     enable = true;
@@ -29,15 +29,15 @@ homelab = {
     blockAds = true;
   };
 };
-\`\`\`
+```
 
 ## IP Address
 
 Set the router's IP address on this network:
 
-\`\`\`nix
+```nix
 homelab = {
   ipAddress = "192.168.2.1";
 };
-\`\`\`
+```
 

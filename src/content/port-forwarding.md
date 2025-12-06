@@ -6,7 +6,7 @@ Configure port forwarding rules to expose internal services to the internet.
 
 Add port forwarding rules:
 
-\`\`\`nix
+```nix
 portForwards = [
   {
     name = "web-server";
@@ -23,7 +23,7 @@ portForwards = [
     internalPort = 22;
   }
 ];
-\`\`\`
+```
 
 ## Rule Format
 

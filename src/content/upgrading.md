@@ -6,11 +6,11 @@
 
 2. Re-run the script:
 
-   \`\`\`bash
+   ```bash
    curl -fsSL https://beard.click/nixos-router > install.sh
    chmod +x install.sh
    sudo ./install.sh
-   \`\`\`
+   ```
 
    Choose the upgrade option when prompted. The script pulls the latest commits and rebuilds the system.
 
@@ -28,7 +28,7 @@
 
 After upgrading, verify the system is working correctly:
 
-\`\`\`bash
+```bash
 # Check NixOS version
 sudo nixos-version
 
@@ -40,5 +40,5 @@ sudo systemctl --failed
 
 # Check WebUI is running
 sudo systemctl status router-webui-backend.service
-\`\`\`
+```
 

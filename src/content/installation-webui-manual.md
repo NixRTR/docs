@@ -25,27 +25,27 @@ This guide covers installing the WebUI manually on other Linux distributions suc
 ### 1. Install System Dependencies
 
 **Ubuntu/Debian:**
-\`\`\`bash
+```bash
 sudo apt update
 sudo apt install -y python3.11 python3-pip python3-venv postgresql postgresql-contrib redis-server nginx nodejs npm build-essential
-\`\`\`
+```
 
 **Fedora:**
-\`\`\`bash
+```bash
 sudo dnf install -y python3.11 python3-pip postgresql postgresql-server redis nginx nodejs npm gcc gcc-c++ make
 sudo postgresql-setup --initdb
 sudo systemctl enable --now postgresql redis
-\`\`\`
+```
 
 **Arch Linux:**
-\`\`\`bash
+```bash
 sudo pacman -S python python-pip postgresql redis nginx nodejs npm base-devel
 sudo systemctl enable --now postgresql redis
-\`\`\`
+```
 
 ### 2. Set Up PostgreSQL Database
 
-\`\`\`bash
+```bash
 # Create database and user
 sudo -u postgres psql << EOF
 CREATE DATABASE router_webui;
@@ -53,11 +53,11 @@ CREATE USER router_webui WITH PASSWORD 'your-secure-password';
 ALTER DATABASE router_webui OWNER TO router_webui;
 GRANT ALL PRIVILEGES ON DATABASE router_webui TO router_webui;
 \EOF
-\`\`\`
+```
 
 ### 3. Clone and Set Up Backend
 
-\`\`\`bash
+```bash
 # Clone the webui repository
 git clone https://github.com/NixRTR/webui.git
 cd webui/backend
@@ -71,11 +71,11 @@ pip install -r requirements.txt
 
 # Initialize database schema
 psql -h localhost -U router_webui -d router_webui -f schema.sql
-\`\`\`
+```
 
 ### 4. Build Frontend
 
-\`\`\`bash
+```bash
 cd ../frontend
 
 # Install dependencies
@@ -83,13 +83,13 @@ npm install
 
 # Build for production
 npm run build
-\`\`\`
+```
 
 ### 5. Configure Backend
 
 Create a configuration file or set environment variables:
 
-\`\`\`bash
+```bash
 # Create systemd service directory
 sudo mkdir -p /etc/router-webui
 sudo mkdir -p /var/lib/router-webui
@@ -107,13 +107,13 @@ EOF
 # Generate JWT secret
 sudo openssl rand -hex 32 | sudo tee /var/lib/router-webui/jwt-secret
 sudo chmod 600 /var/lib/router-webui/jwt-secret
-\`\`\`
+```
 
 ### 6. Create Systemd Service
 
 Create `/etc/systemd/system/router-webui-backend.service`:
 
-\`\`\`ini
+```ini
 [Unit]
 Description=Router WebUI Backend
 After=network.target postgresql.service
@@ -131,13 +131,13 @@ RestartSec=10s
 
 [Install]
 WantedBy=multi-user.target
-\`\`\`
+```
 
 ### 7. Configure Nginx
 
 Create `/etc/nginx/sites-available/router-webui`:
 
-\`\`\`nginx
+```nginx
 server {
     listen 8080;
     server_name _;
@@ -172,31 +172,31 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
     }
 }
-\`\`\`
+```
 
 Enable the site:
-\`\`\`bash
+```bash
 sudo ln -s /etc/nginx/sites-available/router-webui /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl reload nginx
-\`\`\`
+```
 
 ### 8. Create System User
 
-\`\`\`bash
+```bash
 sudo useradd -r -s /bin/false router-webui
 sudo chown -R router-webui:router-webui /var/lib/router-webui
 sudo chown -R router-webui:router-webui /path/to/webui
-\`\`\`
+```
 
 ### 9. Start Services
 
-\`\`\`bash
+```bash
 sudo systemctl daemon-reload
 sudo systemctl enable router-webui-backend
 sudo systemctl start router-webui-backend
 sudo systemctl status router-webui-backend
-\`\`\`
+```
 
 ### 10. Access WebUI
 

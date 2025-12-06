@@ -2,7 +2,7 @@
 
 ## Basic System Verification
 
-\`\`\`bash
+```bash
 # Check NixOS version
 sudo nixos-version
 
@@ -14,11 +14,11 @@ sudo systemctl --failed
 
 # Check system health
 sudo systemctl status
-\`\`\`
+```
 
 ## Router-Specific Services
 
-\`\`\`bash
+```bash
 # WebUI Backend (main service)
 sudo systemctl status router-webui-backend.service
 
@@ -40,11 +40,11 @@ sudo systemctl status linode-dyndns-on-wan-up.service
 # Speedtest monitoring (if enabled)
 sudo systemctl status speedtest.service
 sudo systemctl status speedtest-on-wan-up.service
-\`\`\`
+```
 
 ## Verify Network Connectivity
 
-\`\`\`bash
+```bash
 # Check WAN interface is up
 ip addr show eno1  # or your WAN interface
 ip link show eno1
@@ -66,11 +66,11 @@ sudo nft list ruleset | grep -A 10 "nat"
 # Test internet connectivity
 ping -c 3 8.8.8.8
 ping -c 3 google.com
-\`\`\`
+```
 
 ## Verify DNS
 
-\`\`\`bash
+```bash
 # Test DNS resolution
 dig @192.168.2.1 router.jeandr.net  # HOMELAB DNS
 dig @192.168.3.1 router.jeandr.net  # LAN DNS
@@ -81,11 +81,11 @@ sudo ss -tlnp | grep :53
 # Test DNS from a client
 # (from a device on the network)
 nslookup router.jeandr.net 192.168.2.1
-\`\`\`
+```
 
 ## Verify DHCP
 
-\`\`\`bash
+```bash
 # Check DHCP leases file exists and has entries
 sudo cat /var/lib/kea/dhcp4.leases | tail -20
 
@@ -94,11 +94,11 @@ sudo ss -ulnp | grep :67
 
 # Test DHCP from a client
 # (release and renew on a client device)
-\`\`\`
+```
 
 ## Verify WebUI
 
-\`\`\`bash
+```bash
 # Check WebUI is accessible
 curl -I http://localhost:8080
 # or from a client:
@@ -109,11 +109,11 @@ sudo journalctl -u router-webui-backend.service -n 50 --no-pager
 
 # Verify database connection
 sudo -u router-webui psql -h localhost -U router_webui -d router_webui -c "SELECT COUNT(*) FROM system_metrics;"
-\`\`\`
+```
 
 ## Verify Firewall and Port Forwarding
 
-\`\`\`bash
+```bash
 # Verify nftables rules are loaded
 sudo nft list ruleset
 
@@ -122,5 +122,5 @@ sudo nft list chain inet router port_forward
 
 # Test port forwarding (from external network)
 # telnet your-public-ip 443
-\`\`\`
+```
 

@@ -6,7 +6,7 @@ Configure LAN (Local Area Network) bridges for your internal networks.
 
 Bridges allow you to combine multiple physical interfaces into a single logical network:
 
-\`\`\`nix
+```nix
 lan = {
   bridges = [
     {
@@ -29,23 +29,23 @@ lan = {
     }
   ];
 };
-\`\`\`
+```
 
 ## Network Isolation
 
 Enable isolation to block traffic between bridges:
 
-\`\`\`nix
+```nix
 lan = {
   isolation = true;
 };
-\`\`\`
+```
 
 ## Isolation Exceptions
 
 Allow specific devices to access other networks:
 
-\`\`\`nix
+```nix
 isolationExceptions = [
   {
     source = "192.168.3.10";
@@ -53,5 +53,5 @@ isolationExceptions = [
     destBridge = "br0";
   }
 ];
-\`\`\`
+```
 

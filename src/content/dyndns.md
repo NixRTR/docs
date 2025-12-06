@@ -6,7 +6,7 @@ Configure dynamic DNS updates to keep your domain pointing to your router's publ
 
 The router supports Linode's Dynamic DNS service:
 
-\`\`\`nix
+```nix
 dyndns = {
   enable = true;
   provider = "linode";
@@ -14,7 +14,7 @@ dyndns = {
   subdomain = "router";
   updateInterval = 300;  # 5 minutes
 };
-\`\`\`
+```
 
 ## Configuration Options
 
@@ -28,19 +28,19 @@ dyndns = {
 
 Dynamic DNS credentials should be stored in your secrets file:
 
-\`\`\`yaml
+```yaml
 linode-api-key: "your-api-key-here"
-\`\`\`
+```
 
 ## Verification
 
 Check if dynamic DNS is working:
 
-\`\`\`bash
+```bash
 # Check service status
 sudo systemctl status linode-dyndns.service
 
 # Check logs
 sudo journalctl -u linode-dyndns.service -n 50
-\`\`\`
+```
 

@@ -6,43 +6,43 @@ Configure global DNS settings that apply to all networks.
 
 Enable ad-blocking and malware protection:
 
-\`\`\`nix
+```nix
 dns = {
   blockAds = true;
   blockMalware = true;
 };
-\`\`\`
+```
 
 ## Upstream DNS Servers
 
 Configure upstream DNS servers for recursive resolution:
 
-\`\`\`nix
+```nix
 dns = {
   upstreamServers = [
     "1.1.1.1"
     "9.9.9.9"
   ];
 };
-\`\`\`
+```
 
 ## DNS-over-TLS
 
 Enable DNS-over-TLS for encrypted DNS queries:
 
-\`\`\`nix
+```nix
 dns = {
   dnsOverTls = true;
 };
-\`\`\`
+```
 
 ## DNSSEC
 
 Enable DNSSEC validation:
 
-\`\`\`nix
+```nix
 dns = {
   dnssec = true;
 };
-\`\`\`
+```
 
