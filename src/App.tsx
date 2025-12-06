@@ -8,6 +8,7 @@ const Installation = lazy(() => import('./pages/Installation').then(m => ({ defa
 const InstallationNixOSRouter = lazy(() => import('./pages/InstallationNixOSRouter').then(m => ({ default: m.InstallationNixOSRouter })));
 const InstallationWebUIManual = lazy(() => import('./pages/InstallationWebUIManual').then(m => ({ default: m.InstallationWebUIManual })));
 const InstallationWebUIDocker = lazy(() => import('./pages/InstallationWebUIDocker').then(m => ({ default: m.InstallationWebUIDocker })));
+const InstallationWebUINonNixOSRouter = lazy(() => import('./pages/InstallationWebUINonNixOSRouter').then(m => ({ default: m.InstallationWebUINonNixOSRouter })));
 const Upgrading = lazy(() => import('./pages/Upgrading').then(m => ({ default: m.Upgrading })));
 const Verification = lazy(() => import('./pages/Verification').then(m => ({ default: m.Verification })));
 const Configuration = lazy(() => import('./pages/Configuration').then(m => ({ default: m.Configuration })));
@@ -73,6 +74,7 @@ function App() {
             <Route path="/installation/nixos-router" element={<InstallationNixOSRouter />} />
             <Route path="/installation/webui/manual" element={<InstallationWebUIManual />} />
             <Route path="/installation/webui/docker" element={<InstallationWebUIDocker />} />
+            <Route path="/installation/webui/non-nixos-router" element={<InstallationWebUINonNixOSRouter />} />
             <Route path="/upgrading" element={<Upgrading />} />
             <Route path="/verification" element={<Verification />} />
             <Route path="/webui" element={<WebUIOverview />} />

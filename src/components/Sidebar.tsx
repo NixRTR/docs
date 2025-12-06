@@ -44,6 +44,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         { path: '/installation/nixos-router', label: 'NixOS Router' },
         { path: '/installation/webui/manual', label: 'WebUI Manual' },
         { path: '/installation/webui/docker', label: 'WebUI Docker' },
+        { path: '/installation/webui/non-nixos-router', label: 'Non-NixOS Router Setup' },
       ],
     },
     {
