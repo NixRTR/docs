@@ -10,55 +10,73 @@ This guide covers installing the WebUI using Docker Compose for easier deploymen
 
 ## Quick Start
 
-1. Clone the repository:
+1. Create a directory for your Docker Compose setup:
 
 \`\`\`bash
-git clone https://github.com/NixRTR/webui.git
-cd webui
+mkdir nixrtr-webui
+cd nixrtr-webui
 \`\`\`
 
-2. Copy the example environment file:
+2. Download the required files:
 
 \`\`\`bash
-cd docker
-cp .env.example .env
+# Download docker-compose.yml
+curl -o docker-compose.yml https://raw.githubusercontent.com/NixRTR/webui/main/docker/docker-compose.yml
+
+# Download docker-compose.override.yml.example (optional, for custom configuration)
+curl -o docker-compose.override.yml.example https://raw.githubusercontent.com/NixRTR/webui/main/docker/docker-compose.override.yml.example
+
+# Download .env.example (if available)
+curl -o .env.example https://raw.githubusercontent.com/NixRTR/webui/main/docker/.env.example
 \`\`\`
 
-3. Edit `docker/.env` and configure your settings (database passwords, JWT secret, etc.)
-
-4. Build the frontend and docs (if not using pre-built images):
+Or using `wget`:
 
 \`\`\`bash
-cd ../frontend
-npm install
-npm run build
-cd ../docs
-npm install
-npm run build
-cd ..
+wget -O docker-compose.yml https://raw.githubusercontent.com/NixRTR/webui/main/docker/docker-compose.yml
+wget -O docker-compose.override.yml.example https://raw.githubusercontent.com/NixRTR/webui/main/docker/docker-compose.override.yml.example
+wget -O .env.example https://raw.githubusercontent.com/NixRTR/webui/main/docker/.env.example
 \`\`\`
 
-5. Start the stack:
+3. Set up configuration files:
 
 \`\`\`bash
-cd docker
+# Copy the example environment file (create .env if .env.example doesn't exist)
+if [ -f .env.example ]; then
+  cp .env.example .env
+else
+  touch .env
+fi
+
+# (Optional) Copy the override example for custom configuration
+cp docker-compose.override.yml.example docker-compose.override.yml
+\`\`\`
+
+4. Edit `.env` and configure your settings (database passwords, JWT secret, etc.)
+
+5. (Optional) Edit `docker-compose.override.yml` for custom service configuration
+
+6. Start the stack (images will be pulled automatically):
+
+\`\`\`bash
 docker-compose up -d
 \`\`\`
 
 Or with Podman:
 
 \`\`\`bash
-cd docker
 podman-compose up -d
 \`\`\`
 
-6. Access the WebUI at `http://localhost:8080`
+7. Access the WebUI at `http://localhost:8080`
+
+**Note**: Pre-built Docker images are used by default. You don't need to build the frontend, docs, or Docker images yourself.
 
 ## Configuration
 
 ### Environment Variables
 
-Edit the `docker/.env` file to configure:
+Edit the `.env` file to configure:
 
 - **Database**: PostgreSQL connection settings
 - **Redis**: Redis connection settings
@@ -79,11 +97,15 @@ The Docker Compose setup mounts the following host paths (if available):
 
 ### Custom Configuration
 
-Create a `docker/docker-compose.override.yml` file to customize the setup:
+Copy and edit `docker-compose.override.yml.example` to `docker-compose.override.yml` for custom configuration:
+
+\`\`\`bash
+cp docker-compose.override.yml.example docker-compose.override.yml
+\`\`\`
+
+Then edit `docker-compose.override.yml` to customize services. For example:
 
 \`\`\`yaml
-version: '3.8'
-
 services:
   backend:
     environment:
@@ -102,35 +124,33 @@ The Docker Compose setup includes:
 - **postgres**: PostgreSQL database
 - **redis**: Redis for Celery broker and caching
 
-## Building Images Locally
+## Using Pre-built Images
 
-To build images locally instead of using pre-built ones:
+Pre-built Docker images are automatically pulled from GitHub Container Registry:
+- `ghcr.io/nixrtr/backend:latest`
+- `ghcr.io/nixrtr/webui:latest`
+
+The `docker-compose.yml` file is configured to use these images by default. No manual building is required.
+
+### Building Images Locally (Advanced)
+
+If you need to build images locally (e.g., for development or custom modifications), you'll need to clone the repository:
 
 \`\`\`bash
-cd docker
+git clone https://github.com/NixRTR/webui.git
+cd webui/docker
 docker-compose build
 \`\`\`
 
 Or build individual services:
 
 \`\`\`bash
-cd docker
+cd webui/docker
 docker-compose build backend
 docker-compose build webui
 \`\`\`
 
-## Using Pre-built Images
-
-Pre-built images are available at:
-- `ghcr.io/nixrtr/backend:latest`
-- `ghcr.io/nixrtr/webui:latest`
-
-To use pre-built images, ensure your `docker-compose.yml` references them or pull them manually:
-
-\`\`\`bash
-docker pull ghcr.io/nixrtr/backend:latest
-docker pull ghcr.io/nixrtr/webui:latest
-\`\`\`
+**Note**: Building locally requires Node.js and npm to build the frontend and documentation.
 
 ## Troubleshooting
 
@@ -138,7 +158,6 @@ docker pull ghcr.io/nixrtr/webui:latest
 
 \`\`\`bash
 # All services
-cd docker
 docker-compose logs -f
 
 # Specific service
@@ -149,14 +168,12 @@ docker-compose logs -f worker
 ### Check Service Status
 
 \`\`\`bash
-cd docker
 docker-compose ps
 \`\`\`
 
 ### Restart Services
 
 \`\`\`bash
-cd docker
 docker-compose restart
 \`\`\`
 
@@ -168,9 +185,9 @@ docker-compose restart
 
 ### Frontend Not Loading
 
-- Verify webui service is running: `cd docker && docker-compose ps webui`
-- Check Nginx logs: `cd docker && docker-compose logs webui`
-- Ensure frontend build artifacts exist in `frontend/dist`
+- Verify webui service is running: `docker-compose ps webui`
+- Check Nginx logs: `docker-compose logs webui`
+- Ensure the webui image was pulled successfully: `docker images | grep nixrtr/webui`
 
 ### Authentication Issues
 
@@ -190,14 +207,19 @@ To update to the latest version:
 
 \`\`\`bash
 # Pull latest images
-cd docker
 docker-compose pull
 
 # Restart services
 docker-compose up -d
 \`\`\`
 
-Or rebuild from source:
+To update the docker-compose.yml file itself, re-download it:
+
+\`\`\`bash
+curl -o docker-compose.yml https://raw.githubusercontent.com/NixRTR/webui/main/docker/docker-compose.yml
+\`\`\`
+
+Or if you cloned the repository for local building:
 
 \`\`\`bash
 # Pull latest code
@@ -210,7 +232,7 @@ docker-compose up -d --build
 
 ## Production Considerations
 
-- Use strong passwords and secrets in `docker/.env`
+- Use strong passwords and secrets in `.env`
 - Set up proper firewall rules
 - Use HTTPS (configure reverse proxy or use Caddy)
 - Regularly update images
