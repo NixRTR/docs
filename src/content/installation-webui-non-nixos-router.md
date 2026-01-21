@@ -286,3 +286,6 @@ The WebUI will function with just Kea DHCP, though some features (DNS stats, ban
 - **Permission denied**: Ensure the Docker container has appropriate permissions to read `/etc/shadow`
 - **User not found**: Verify the user exists on the host system
 
+
+
+

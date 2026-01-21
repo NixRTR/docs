@@ -40,3 +40,6 @@ sudo ./install.sh
 
 5. After completion, reboot and remove the USB stick.
 
+
+
+

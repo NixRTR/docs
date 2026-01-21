@@ -212,3 +212,6 @@ Open `http://your-router-ip:8080` in your browser.
 - **Frontend not loading**: Verify Nginx configuration and file permissions
 - **Authentication issues**: Ensure PAM is properly configured for your distribution
 
+
+
+
