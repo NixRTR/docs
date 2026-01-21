@@ -40,4 +40,7 @@ sudo ./install.sh
 
 5. After completion, reboot and remove the USB stick.
 
+
+
+
 `;function a(){return n.jsx("div",{className:"p-6 max-w-4xl mx-auto",children:n.jsx("div",{className:"bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6",children:n.jsx(t,{content:e})})})}export{a as InstallationNixOSRouter};

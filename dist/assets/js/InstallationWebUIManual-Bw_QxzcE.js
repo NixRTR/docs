@@ -212,4 +212,7 @@ Open \`http://your-router-ip:8080\` in your browser.
 - **Frontend not loading**: Verify Nginx configuration and file permissions
 - **Authentication issues**: Ensure PAM is properly configured for your distribution
 
+
+
+
 `;function a(){return n.jsx("div",{className:"p-6 max-w-4xl mx-auto",children:n.jsx("div",{className:"bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6",children:n.jsx(e,{content:t})})})}export{a as InstallationWebUIManual};
