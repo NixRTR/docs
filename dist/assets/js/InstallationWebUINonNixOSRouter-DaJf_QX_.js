@@ -1,105 +1,72 @@
-import{j as n}from"./ui-vendor-CtbJYEGA.js";import{M as e}from"./MarkdownContent-D-Zi6kKK.js";import"./react-vendor-ZjkKMkft.js";import"./markdown-vendor-D8KYDTzx.js";const t=`# Non-NixOS Router Setup
+import{j as n}from"./ui-vendor-CtbJYEGA.js";import{M as e}from"./MarkdownContent-D-Zi6kKK.js";import"./react-vendor-ZjkKMkft.js";import"./markdown-vendor-D8KYDTzx.js";const i=`# Non-NixOS Router Setup
 
 The WebUI integrates with several router services to provide full functionality. On a non-NixOS system, you'll need to install and configure these services separately.
 
 ## Required Services
 
-### 1. Kea DHCP Server
+### 1. dnsmasq DNS and DHCP Server
 
-**Purpose**: Provides DHCP lease information for device tracking, client management, and bandwidth monitoring.
+**Purpose**: Provides DNS resolution, DHCP lease information for device tracking, client management, and bandwidth monitoring. dnsmasq combines DNS and DHCP functionality in a single service.
 
 **Installation**:
-- **Debian/Ubuntu**: \`apt-get install isc-kea-dhcp4-server\`
-- **RHEL/CentOS**: \`yum install kea\`
-- **Arch Linux**: \`pacman -S kea\`
+- **Debian/Ubuntu**: \`apt-get install dnsmasq\`
+- **RHEL/CentOS**: \`yum install dnsmasq\`
+- **Arch Linux**: \`pacman -S dnsmasq\`
 
 **Configuration**:
-1. Configure Kea to write leases to \`/var/lib/kea/dhcp4.leases\` (or your preferred path)
-2. Update the \`KEA_LEASE_FILE\` environment variable in \`.env\`:
+1. Configure dnsmasq to write leases to separate files per network:
+   - \`/var/lib/dnsmasq/homelab/dhcp.leases\` (for homelab network)
+   - \`/var/lib/dnsmasq/lan/dhcp.leases\` (for lan network)
+2. Update the \`DNSMASQ_LEASE_FILES\` environment variable in \`.env\`:
    \`\`\`bash
-   KEA_LEASE_FILE=/var/lib/kea/dhcp4.leases
+   DNSMASQ_LEASE_FILES=/var/lib/dnsmasq/homelab/dhcp.leases /var/lib/dnsmasq/lan/dhcp.leases
    \`\`\`
 3. Mount the lease directory in \`docker-compose.yml\` (already configured):
    \`\`\`yaml
    volumes:
-     - \${KEA_LEASE_DIR:-/var/lib/kea}:/var/lib/kea:ro
+     - \${DNSMASQ_LEASE_DIR:-/var/lib/dnsmasq}:/var/lib/dnsmasq:ro
    \`\`\`
 
-**Kea Configuration Example** (\`/etc/kea/kea-dhcp4.conf\`):
-\`\`\`json
-{
-  "Dhcp4": {
-    "lease-database": {
-      "type": "memfile",
-      "persist": true,
-      "name": "/var/lib/kea/dhcp4.leases"
-    },
-    "subnet4": [
-      {
-        "subnet": "192.168.1.0/24",
-        "pools": [{"pool": "192.168.1.100 - 192.168.1.200"}]
-      }
-    ]
-  }
-}
+**dnsmasq Configuration Example** (\`/etc/dnsmasq.conf\`):
+\`\`\`conf
+# Interface binding
+interface=br0
+bind-interfaces
+
+# Upstream DNS servers
+server=1.1.1.1
+server=9.9.9.9
+
+# DHCP Configuration
+dhcp-range=br0,192.168.1.100,192.168.1.200,1h
+dhcp-option=br0,3,192.168.1.1  # Router
+dhcp-option=br0,6,192.168.1.1  # DNS servers
+dhcp-authoritative
+dhcp-leasefile=/var/lib/dnsmasq/homelab/dhcp.leases
+
+# Local domain
+domain=local
+local=/local/
+
+# Performance
+cache-size=10000
 \`\`\`
 
-#### Starting Kea
+**Note**: For multiple networks, you may need separate dnsmasq instances or use interface-specific configuration. The WebUI expects separate lease files per network.
+
+#### Starting dnsmasq
 
 \`\`\`bash
 # Debian/Ubuntu
-sudo systemctl enable kea-dhcp4-server
-sudo systemctl start kea-dhcp4-server
+sudo systemctl enable dnsmasq
+sudo systemctl start dnsmasq
 
 # RHEL/CentOS
-sudo systemctl enable kea-dhcp4-server
-sudo systemctl start kea-dhcp4-server
+sudo systemctl enable dnsmasq
+sudo systemctl start dnsmasq
 \`\`\`
 
-### 2. Unbound DNS Server
-
-**Purpose**: Provides DNS statistics and metrics for DNS monitoring.
-
-**Installation**:
-- **Debian/Ubuntu**: \`apt-get install unbound\`
-- **RHEL/CentOS**: \`yum install unbound\`
-- **Arch Linux**: \`pacman -S unbound\`
-
-**Configuration**:
-1. Enable the control socket in Unbound configuration (\`/etc/unbound/unbound.conf\`):
-   \`\`\`yaml
-   remote-control:
-       control-enable: yes
-       control-interface: /run/unbound/control
-   \`\`\`
-2. For multiple instances (homelab/lan), configure separate sockets:
-   - \`/run/unbound-homelab/control\`
-   - \`/run/unbound-lan/control\`
-3. Update environment variables in \`.env\`:
-   \`\`\`bash
-   UNBOUND_RUN_DIR=/run/unbound
-   \`\`\`
-4. Mount the control socket directory (already configured):
-   \`\`\`yaml
-   volumes:
-     - \${UNBOUND_RUN_DIR:-/run/unbound}:/run/unbound:ro
-   \`\`\`
-
-**Note**: The WebUI looks for \`unbound-control\` in common paths. Ensure it's in your PATH or install it:
-- **Debian/Ubuntu**: Included with \`unbound\` package
-- **RHEL/CentOS**: Included with \`unbound\` package
-
-#### Starting Unbound
-
-\`\`\`bash
-# Debian/Ubuntu
-sudo systemctl enable unbound
-sudo systemctl start unbound
-
-# RHEL/CentOS
-sudo systemctl enable unbound
-sudo systemctl start unbound
-\`\`\`
+**Note**: DNS statistics collection is not available with dnsmasq (it doesn't provide a control socket like Unbound). The WebUI will function without DNS statistics, but that feature will be unavailable.
 
 ### 3. Router Configuration File (Alternative)
 
@@ -214,16 +181,13 @@ sudo systemctl start unbound
 Update your \`.env\` file with the following paths for non-NixOS systems:
 
 \`\`\`bash
-# DHCP Lease File
-KEA_LEASE_FILE=/var/lib/kea/dhcp4.leases
-KEA_LEASE_DIR=/var/lib/kea
+# DHCP Lease Files (space-separated paths for multiple networks)
+DNSMASQ_LEASE_FILES=/var/lib/dnsmasq/homelab/dhcp.leases /var/lib/dnsmasq/lan/dhcp.leases
+DNSMASQ_LEASE_DIR=/var/lib/dnsmasq
 
 # Router Configuration (optional, for initial migration)
 ROUTER_CONFIG_FILE=/opt/nixrtr/router-config.nix
 ROUTER_CONFIG_DIR=/opt/nixrtr
-
-# Unbound DNS Control Socket
-UNBOUND_RUN_DIR=/run/unbound
 
 # PAM Authentication (optional)
 PAM_CONFIG_DIR=/etc/pam.d
@@ -235,12 +199,12 @@ SHADOW_FILE=/etc/shadow
 After installation, verify services are accessible:
 
 \`\`\`bash
-# Check Kea lease file
-ls -l /var/lib/kea/dhcp4.leases
+# Check dnsmasq lease files
+ls -l /var/lib/dnsmasq/homelab/dhcp.leases
+ls -l /var/lib/dnsmasq/lan/dhcp.leases
 
-# Check Unbound control socket
-ls -l /run/unbound/control
-unbound-control -s /run/unbound/control stats
+# Check dnsmasq is running
+sudo systemctl status dnsmasq
 
 # Check router config file (if using)
 cat /opt/nixrtr/router-config.nix
@@ -253,26 +217,22 @@ ls -l /etc/pam.d/
 
 For a minimal setup without all features:
 
-- **Required**: Kea DHCP Server (for device tracking)
-- **Optional**: Unbound DNS (for DNS statistics)
+- **Required**: dnsmasq DNS and DHCP Server (for device tracking and DNS resolution)
 - **Optional**: Router config file (can configure via WebUI instead)
 - **Optional**: PAM authentication (can use JWT-only)
 
-The WebUI will function with just Kea DHCP, though some features (DNS stats, bandwidth shaping, notifications) will be unavailable.
+The WebUI will function with just dnsmasq, though some features (DNS statistics, bandwidth shaping, notifications) may be unavailable. Note that DNS statistics are not available with dnsmasq as it doesn't provide a control socket like Unbound.
 
 ## Troubleshooting
 
-### Kea DHCP Issues
+### dnsmasq Issues
 
-- **Lease file not found**: Verify Kea is running and writing to the configured path
-- **No devices showing**: Check that Kea is serving DHCP leases and the lease file is readable
-- **Permission denied**: Ensure the Docker container has read access to \`/var/lib/kea\`
-
-### Unbound DNS Issues
-
-- **Control socket not found**: Verify Unbound is running and the control socket is enabled
-- **No DNS statistics**: Check that \`unbound-control\` is available and the socket path is correct
-- **Permission denied**: Ensure the Docker container has read access to \`/run/unbound\`
+- **Lease file not found**: Verify dnsmasq is running and writing to the configured paths
+- **No devices showing**: Check that dnsmasq is serving DHCP leases and the lease files are readable
+- **Permission denied**: Ensure the Docker container has read access to \`/var/lib/dnsmasq\`
+- **DNS not resolving**: Verify dnsmasq is listening on port 53 and upstream DNS servers are configured
+- **DHCP not working**: Check that dnsmasq has DHCP enabled and is listening on port 67
+- **No DNS statistics**: DNS statistics are not available with dnsmasq (it doesn't provide a control socket). This is expected behavior.
 
 ### Router Config Issues
 
@@ -289,4 +249,4 @@ The WebUI will function with just Kea DHCP, though some features (DNS stats, ban
 
 
 
-`;function s(){return n.jsx("div",{className:"p-6 max-w-4xl mx-auto",children:n.jsx("div",{className:"bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6",children:n.jsx(e,{content:t})})})}export{s as InstallationWebUINonNixOSRouter};
+`;function r(){return n.jsx("div",{className:"p-6 max-w-4xl mx-auto",children:n.jsx("div",{className:"bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6",children:n.jsx(e,{content:i})})})}export{r as InstallationWebUINonNixOSRouter};

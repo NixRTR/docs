@@ -1,4 +1,4 @@
-import{j as t,M as I}from"./ui-vendor-CtbJYEGA.js";import{M as A}from"./MarkdownContent-D-Zi6kKK.js";import{a as o}from"./react-vendor-ZjkKMkft.js";import{H as V,a as O}from"./index-Cf6jcmYB.js";import"./markdown-vendor-D8KYDTzx.js";const U=`# NixOS Router Documentation
+import{j as t,M as I}from"./ui-vendor-CtbJYEGA.js";import{M as A}from"./MarkdownContent-D-Zi6kKK.js";import{a as o}from"./react-vendor-ZjkKMkft.js";import{H as V,a as O}from"./index-DEgLPMFz.js";import"./markdown-vendor-D8KYDTzx.js";const U=`# NixOS Router Documentation
 
 Welcome to the NixOS Router documentation. This guide will help you install, configure, and maintain your NixOS-based router.
 
@@ -13,8 +13,7 @@ Welcome to the NixOS Router documentation. This guide will help you install, con
 ## Features
 
 - Multi-network support (isolated LAN segments)
-- DHCP server (Kea)
-- DNS server (Unbound with ad-blocking)
+- DHCP and DNS server (dnsmasq with ad-blocking)
 - Web dashboard for monitoring
 - Dynamic DNS updates (Linode)
 - Firewall and NAT

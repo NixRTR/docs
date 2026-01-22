@@ -25,13 +25,9 @@ sudo systemctl status router-webui-backend.service
 # PostgreSQL (required for WebUI)
 sudo systemctl status postgresql.service
 
-# Kea DHCP servers (check both networks if configured)
-sudo systemctl status kea-dhcp4-homelab.service
-sudo systemctl status kea-dhcp4-lan.service
-
-# Unbound DNS servers (check both networks if configured)
-sudo systemctl status unbound-homelab.service
-sudo systemctl status unbound-lan.service
+# dnsmasq DNS and DHCP servers (check both networks if configured)
+sudo systemctl status dnsmasq-homelab.service
+sudo systemctl status dnsmasq-lan.service
 
 # Dynamic DNS (if enabled)
 sudo systemctl status linode-dyndns.service
@@ -86,8 +82,9 @@ nslookup router.jeandr.net 192.168.2.1
 ## Verify DHCP
 
 \`\`\`bash
-# Check DHCP leases file exists and has entries
-sudo cat /var/lib/kea/dhcp4.leases | tail -20
+# Check DHCP leases files exist and have entries
+sudo cat /var/lib/dnsmasq/homelab/dhcp.leases | tail -20
+sudo cat /var/lib/dnsmasq/lan/dhcp.leases | tail -20
 
 # Verify DHCP is listening
 sudo ss -ulnp | grep :67

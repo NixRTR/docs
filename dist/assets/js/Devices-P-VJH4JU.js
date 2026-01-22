@@ -1,4 +1,4 @@
-import{j as e}from"./ui-vendor-CtbJYEGA.js";import{M as t}from"./MarkdownContent-D-Zi6kKK.js";import"./react-vendor-ZjkKMkft.js";import"./markdown-vendor-D8KYDTzx.js";const a=`# Devices
+import{j as e}from"./ui-vendor-CtbJYEGA.js";import{M as t}from"./MarkdownContent-D-Zi6kKK.js";import"./react-vendor-ZjkKMkft.js";import"./markdown-vendor-D8KYDTzx.js";const s=`# Devices
 
 ![Devices Page](../screenshots/005-devices.webp)
 
@@ -71,10 +71,10 @@ The Devices page shows all devices connected to your router's networks, allowing
 ## Data Source
 
 Device information is collected from multiple sources:
-- **DHCP Leases**: Active DHCP leases from Kea DHCP server
+- **DHCP Leases**: Active DHCP leases from dnsmasq DHCP servers
 - **ARP Table**: MAC-to-IP mappings from the system ARP table
 - **Network Scans**: Periodic network discovery scans
 - **Manual Entries**: Devices you manually add or configure
 
 Data is collected every 5 seconds and stored in the database. The system handles IP address changes and MAC address reassignments automatically.
-`;function n(){return e.jsx("div",{className:"p-6 max-w-4xl mx-auto",children:e.jsx("div",{className:"bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6",children:e.jsx(t,{content:a})})})}export{n as Devices};
+`;function n(){return e.jsx("div",{className:"p-6 max-w-4xl mx-auto",children:e.jsx("div",{className:"bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6",children:e.jsx(t,{content:s})})})}export{n as Devices};
