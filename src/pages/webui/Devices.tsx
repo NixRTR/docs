@@ -73,7 +73,7 @@ The Devices page shows all devices connected to your router's networks, allowing
 ## Data Source
 
 Device information is collected from multiple sources:
-- **DHCP Leases**: Active DHCP leases from Kea DHCP server
+- **DHCP Leases**: Active DHCP leases from dnsmasq DHCP servers
 - **ARP Table**: MAC-to-IP mappings from the system ARP table
 - **Network Scans**: Periodic network discovery scans
 - **Manual Entries**: Devices you manually add or configure

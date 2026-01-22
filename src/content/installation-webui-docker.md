@@ -87,9 +87,8 @@ Edit the `.env` file to configure:
 
 The Docker Compose setup mounts the following host paths (if available):
 
-- `/var/lib/kea` - DHCP lease files
+- `/var/lib/dnsmasq` - DHCP lease files
 - `/etc/nixos` - Router configuration files
-- `/run/unbound` - DNS control socket
 - `/etc/pam.d` - PAM configuration (read-only)
 - `/etc/shadow` - System password file (read-only, for PAM authentication)
 

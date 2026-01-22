@@ -9,7 +9,7 @@ The DNS management system allows you to:
 - **Configure DNS Zones**: Create and manage DNS zones per network (homelab/lan)
 - **Manage Records**: Add, edit, and delete A and CNAME records
 - **Control Services**: Start, stop, restart, and reload DNS services
-- **Monitor Status**: View real-time status of Unbound DNS services
+- **Monitor Status**: View real-time status of dnsmasq DNS services
 - **Authoritative Zones**: Serve zones locally (transparent local-zone)
 - **Forwarding/Delegation**: Forward zones to specific DNS servers
 
@@ -21,10 +21,10 @@ The DNS management system allows you to:
 
 ## DNS Services
 
-The router runs separate DNS services for each network:
+The router runs separate DNS services for each network (integrated with dnsmasq DHCP):
 
-- **unbound-homelab**: DNS service for the homelab network
-- **unbound-lan**: DNS service for the LAN network
+- **dnsmasq-homelab**: DNS and DHCP service for the homelab network
+- **dnsmasq-lan**: DNS and DHCP service for the LAN network
 
 ### Service Status
 
@@ -183,8 +183,8 @@ After migration, DNS configuration is managed via the WebUI. Changes to `router-
 1. **Check Service Status**: Verify the service exists and is enabled
 2. **Check Logs**: Review service logs:
    ```bash
-   journalctl -u unbound-homelab -f
-   journalctl -u unbound-lan -f
+   journalctl -u dnsmasq-homelab -f
+   journalctl -u dnsmasq-lan -f
    ```
 3. **Verify Configuration**: Ensure zones and records are valid
 
@@ -275,6 +275,6 @@ curl -X GET http://router-ip:8080/api/dns/service-status/homelab \
 
 ## Additional Resources
 
-- [Unbound Documentation](https://nlnetlabs.nl/documentation/unbound/)
+- [dnsmasq Documentation](https://thekelleys.org.uk/dnsmasq/doc.html)
 - [DNS Record Types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 

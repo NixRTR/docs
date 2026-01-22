@@ -9,7 +9,7 @@ The DHCP management system allows you to:
 - **Configure DHCP Networks**: Set up DHCP for homelab and lan networks
 - **Manage Static Reservations**: Assign fixed IP addresses to devices by MAC address
 - **Control Service**: Start, stop, restart, and reload the DHCP server
-- **Monitor Status**: View real-time status of the Kea DHCP server
+- **Monitor Status**: View real-time status of the dnsmasq DHCP services
 
 ## Accessing DHCP Management
 
@@ -19,9 +19,10 @@ The DHCP management system allows you to:
 
 ## DHCP Service
 
-The router runs a single DHCP server (Kea DHCP) that serves all networks:
+The router runs separate DHCP services for each network (integrated with dnsmasq DNS):
 
-- **kea-dhcp4-server**: DHCP server for all networks
+- **dnsmasq-homelab**: DNS and DHCP service for the homelab network
+- **dnsmasq-lan**: DNS and DHCP service for the LAN network
 
 ### Service Status
 
@@ -172,7 +173,8 @@ After migration, DHCP configuration is managed via the WebUI. Changes to `router
 1. **Check Service Status**: Verify the service exists and is enabled
 2. **Check Logs**: Review service logs:
    ```bash
-   journalctl -u kea-dhcp4-server -f
+   journalctl -u dnsmasq-homelab -f
+   journalctl -u dnsmasq-lan -f
    ```
 3. **Verify Configuration**: Ensure networks and reservations are valid
 
@@ -265,6 +267,6 @@ curl -X GET http://router-ip:8080/api/dhcp/service-status \
 
 ## Additional Resources
 
-- [Kea DHCP Documentation](https://kea.readthedocs.io/)
+- [dnsmasq Documentation](https://thekelleys.org.uk/dnsmasq/doc.html)
 - [DHCP Protocol](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol)
 

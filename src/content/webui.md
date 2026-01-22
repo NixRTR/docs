@@ -99,7 +99,7 @@ The authentication system uses a secure socket-activated helper service:
 - **Zone Management**: Create and manage DNS zones per network (homelab/lan)
 - **Record Management**: Add A and CNAME records to zones
 - **Service Control**: Start, stop, restart, and reload DNS services
-- **Service Status**: Real-time status of Unbound DNS services
+- **Service Status**: Real-time status of dnsmasq DNS services
 - **Authoritative Zones**: Configure zones to be served locally
 - **Forwarding/Delegation**: Forward zones to specific DNS servers
 
@@ -108,7 +108,7 @@ The authentication system uses a secure socket-activated helper service:
 - **Network Management**: Configure DHCP networks per network (homelab/lan)
 - **Static Reservations**: Assign fixed IP addresses to devices by MAC address
 - **Service Control**: Start, stop, restart, and reload DHCP server
-- **Service Status**: Real-time status of Kea DHCP server
+- **Service Status**: Real-time status of dnsmasq DHCP services
 - **Network Configuration**: IP ranges, lease times, DNS servers
 
 ### System
@@ -130,8 +130,8 @@ The WebUI provides service control for DNS and DHCP services:
 
 ### DNS Services
 
-- **unbound-homelab**: DNS service for homelab network
-- **unbound-lan**: DNS service for LAN network
+- **dnsmasq-homelab**: DNS and DHCP service for homelab network
+- **dnsmasq-lan**: DNS and DHCP service for LAN network
 
 Control actions:
 - **Start**: Start the service
@@ -141,7 +141,8 @@ Control actions:
 
 ### DHCP Service
 
-- **kea-dhcp4-server**: DHCP server for all networks
+- **dnsmasq-homelab**: DNS and DHCP service for homelab network
+- **dnsmasq-lan**: DNS and DHCP service for LAN network
 
 Control actions:
 - **Start**: Start the DHCP server
