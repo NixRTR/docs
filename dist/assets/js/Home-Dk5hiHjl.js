@@ -1,4 +1,4 @@
-import{j as t,M as I}from"./ui-vendor-CtbJYEGA.js";import{M as V}from"./MarkdownContent-C36B4BtH.js";import{a as o}from"./react-vendor-ZjkKMkft.js";import{H as O,a as U}from"./index-C7AC4TIV.js";import"./markdown-vendor-_zLkdjX1.js";const F=`# NixOS Router Documentation
+import{j as t,M as I}from"./ui-vendor-CtbJYEGA.js";import{M as V}from"./MarkdownContent-C36B4BtH.js";import{a as o}from"./react-vendor-ZjkKMkft.js";import{H as O,a as U}from"./index-Bx61t71E.js";import"./markdown-vendor-_zLkdjX1.js";const F=`# NixOS Router Documentation
 
 Welcome to the NixOS Router documentation. This guide will help you install, configure, and maintain your NixOS-based router.
 
