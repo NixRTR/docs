@@ -65,6 +65,8 @@ The authentication system uses a secure socket-activated helper service:
 
 ## Pages and Features
 
+Paths in parentheses (e.g. `/settings/dns`) are the **WebUI app** paths. Links in this doc (e.g. [DNS](/webui/dns)) are **documentation site** paths.
+
 ### Dashboard
 
 - System overview with real-time metrics
@@ -123,6 +125,48 @@ The authentication system uses a secure socket-activated helper service:
 - Run speed tests
 - View historical results
 - Compare performance over time
+
+### CAKE
+
+- View and configure CAKE traffic shaping from the WebUI (path: **Settings** → **CAKE**, `/settings/cake`).
+- See [WebUI CAKE](/webui/cake) and [CAKE configuration](/configuration/cake) for details.
+
+### Blocklists and Whitelist
+
+- Manage DNS blocklists and whitelist per network (homelab, lan) from **Settings** → **Blocklists** (`/settings/blocklists-whitelist`).
+- See [WebUI Blocklists](/webui/blocklists) and [Global DNS](/configuration/global-dns).
+
+### Port Forwarding
+
+- Manage port forwarding rules from **Settings** → **Port Forwarding** (`/settings/port-forwarding`).
+- See [WebUI Port Forwarding](/webui/port-forwarding) and [Port Forwarding configuration](/configuration/port-forwarding).
+
+### Dynamic DNS
+
+- Configure DynDns providers and updates from **Settings** → **Dynamic DNS** (`/settings/dyndns`).
+- See [WebUI Dynamic DNS](/webui/dyndns) and [Dynamic DNS configuration](/configuration/dyndns).
+
+### Worker Status
+
+- View Celery worker and task status under **System** → **Worker Status** (`/settings/worker-status`).
+- See [WebUI Worker Status](/webui/worker-status).
+
+### Logs
+
+- View system and application logs under **System** → **Logs** (`/system/logs`).
+- See [WebUI Logs](/webui/logs).
+
+### Traffic Shaping
+
+- View traffic shaping overview and CAKE-related stats at **Traffic Shaping** (`/traffic-shaping`).
+- See [WebUI Traffic Shaping](/webui/traffic-shaping).
+
+### Documentation (in-app)
+
+- The WebUI sidebar includes a **Documentation** link that opens this documentation site in a new tab.
+- See [WebUI Documentation](/webui/documentation).
+
+**Note:** Paths like `/webui/dns` in this documentation site refer to **docs pages**. Inside the WebUI app, the same features use different paths (e.g. `/settings/dns`, `/settings/cake`). Use the WebUI sidebar to navigate the app.
 
 ## Service Control
 
@@ -229,7 +273,18 @@ The WebUI provides a REST API for programmatic access:
 
 ## Additional Resources
 
-- [Notifications Documentation](/webui/notifications) - Learn about notification rules
-- [Apprise Documentation](/webui/apprise) - Learn about Apprise notification services
-- [DNS Documentation](/webui/dns) - Learn about DNS management
-- [DHCP Documentation](/webui/dhcp) - Learn about DHCP management
+Links below are **documentation site** paths (e.g. `/webui/dns`). Inside the WebUI app, the same features use different paths (e.g. `/settings/dns`). Use the WebUI sidebar to navigate the app.
+
+- [Notifications](/webui/notifications) - Notification rules
+- [Apprise](/webui/apprise) - Apprise notification services
+- [DNS](/webui/dns) - DNS management
+- [DHCP](/webui/dhcp) - DHCP management
+- [CAKE](/webui/cake) - CAKE traffic shaping
+- [Blocklists](/webui/blocklists) - Blocklists and whitelist
+- [Port Forwarding](/webui/port-forwarding) - Port forwarding rules
+- [Dynamic DNS](/webui/dyndns) - Dynamic DNS configuration
+- [Worker Status](/webui/worker-status) - Celery worker and task status
+- [Logs](/webui/logs) - System and application logs
+- [Traffic Shaping](/webui/traffic-shaping) - Traffic shaping overview
+- [Documentation link](/webui/documentation) - In-app documentation link
+- [Navigation](/webui/navigation) - WebUI navbar and sidebar

@@ -2,7 +2,7 @@ import { MarkdownContent } from '../../components/MarkdownContent';
 
 const loginContent = `# Login
 
-![Login Page](../screenshots/001-Login.webp)
+![Login Page](/docs/screenshots/001-Login.webp)
 
 ## Overview
 

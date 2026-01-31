@@ -57,7 +57,8 @@ export function Home() {
   const [containerHeight, setContainerHeight] = useState<number | null>(null); // Dynamic container height
   const basePath = import.meta.env.VITE_BASE_PATH || '/docs/';
   const intervalRef = useRef<number | null>(null);
-  const lastAutoAdvanceRef = useRef<number>(Date.now()); // Track when last AUTO advance happened (not manual)
+  const [initialNow] = useState(() => Date.now());
+  const lastAutoAdvanceRef = useRef<number>(initialNow); // Track when last AUTO advance happened (not manual)
   const imageContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

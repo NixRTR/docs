@@ -1,83 +1,202 @@
 {
-  "generated": "2026-01-22T07:17:00.174Z",
-  "count": 11,
+  "generated": "2026-01-31T23:39:06.459Z",
+  "count": 28,
   "screenshots": [
     {
-      "file": "001-Login.webp",
-      "original": "001-Login.png",
-      "alt": "Login",
-      "size": 12990,
-      "originalSize": 31286
-    },
-    {
-      "file": "002-dashboard.webp",
-      "original": "002-dashboard.png",
+      "file": "001-dashboard.webp",
+      "original": "001-dashboard.png",
       "alt": "Dashboard",
       "size": 34046,
       "originalSize": 67959
     },
     {
-      "file": "003-sidebar.webp",
-      "original": "003-sidebar.png",
-      "alt": "Sidebar",
-      "size": 30034,
-      "originalSize": 66941
-    },
-    {
-      "file": "004-network.webp",
-      "original": "004-network.png",
-      "alt": "Network",
-      "size": 42080,
-      "originalSize": 73095
-    },
-    {
-      "file": "005-devices.webp",
-      "original": "005-devices.png",
-      "alt": "Devices",
-      "size": 36230,
-      "originalSize": 70318
-    },
-    {
-      "file": "006-device-usage.webp",
-      "original": "006-device-usage.png",
-      "alt": "Device Usage",
-      "size": 29102,
-      "originalSize": 56631
-    },
-    {
-      "file": "007-device-usage-2.webp",
-      "original": "007-device-usage-2.png",
-      "alt": "Device Usage 2",
-      "size": 42268,
-      "originalSize": 72550
-    },
-    {
-      "file": "008-system.webp",
-      "original": "008-system.png",
-      "alt": "System",
-      "size": 40932,
-      "originalSize": 65183
-    },
-    {
-      "file": "009-speedtest.webp",
-      "original": "009-speedtest.png",
-      "alt": "Speedtest",
-      "size": 32230,
-      "originalSize": 61390
-    },
-    {
-      "file": "010-system-info.webp",
-      "original": "010-system-info.png",
-      "alt": "System Info",
-      "size": 40140,
-      "originalSize": 60620
-    },
-    {
-      "file": "011-dark-mode.webp",
-      "original": "011-dark-mode.png",
+      "file": "002-dark-mode.webp",
+      "original": "002-dark-mode.png",
       "alt": "Dark Mode",
       "size": 36984,
       "originalSize": 150887
+    },
+    {
+      "file": "003-menu.webp",
+      "original": "003-menu.png",
+      "alt": "Menu",
+      "size": 28054,
+      "originalSize": 65245
+    },
+    {
+      "file": "004-menu-network.webp",
+      "original": "004-menu-network.png",
+      "alt": "Menu Network",
+      "size": 28664,
+      "originalSize": 67557
+    },
+    {
+      "file": "005-menu-settings.webp",
+      "original": "005-menu-settings.png",
+      "alt": "Menu Settings",
+      "size": 30550,
+      "originalSize": 70931
+    },
+    {
+      "file": "006-menu-system.webp",
+      "original": "006-menu-system.png",
+      "alt": "Menu System",
+      "size": 30064,
+      "originalSize": 71829
+    },
+    {
+      "file": "007-network-charts.webp",
+      "original": "007-network-charts.png",
+      "alt": "Network Charts",
+      "size": 42412,
+      "originalSize": 72829
+    },
+    {
+      "file": "008-network-device-details.webp",
+      "original": "008-network-device-details.png",
+      "alt": "Network Device Details",
+      "size": 31704,
+      "originalSize": 65532
+    },
+    {
+      "file": "009-network-device-details-ports.webp",
+      "original": "009-network-device-details-ports.png",
+      "alt": "Network Device Details Ports",
+      "size": 32594,
+      "originalSize": 60369
+    },
+    {
+      "file": "010-network-devices.webp",
+      "original": "010-network-devices.png",
+      "alt": "Network Devices",
+      "size": 34386,
+      "originalSize": 69523
+    },
+    {
+      "file": "011-network-devices-actions-menu.webp",
+      "original": "011-network-devices-actions-menu.png",
+      "alt": "Network Devices Actions Menu",
+      "size": 35308,
+      "originalSize": 70621
+    },
+    {
+      "file": "012-network-device-usage-details.webp",
+      "original": "012-network-device-usage-details.png",
+      "alt": "Network Device Usage Details",
+      "size": 41880,
+      "originalSize": 70492
+    },
+    {
+      "file": "013-network-usage-header.webp",
+      "original": "013-network-usage-header.png",
+      "alt": "Network Usage Header",
+      "size": 29966,
+      "originalSize": 58329
+    },
+    {
+      "file": "014-network-usage-table.webp",
+      "original": "014-network-usage-table.png",
+      "alt": "Network Usage Table",
+      "size": 43382,
+      "originalSize": 73025
+    },
+    {
+      "file": "015-network-usage-table-sort.webp",
+      "original": "015-network-usage-table-sort.png",
+      "alt": "Network Usage Table Sort",
+      "size": 43390,
+      "originalSize": 74203
+    },
+    {
+      "file": "016-notifications.webp",
+      "original": "016-notifications.png",
+      "alt": "Notifications",
+      "size": 36258,
+      "originalSize": 77088
+    },
+    {
+      "file": "017-settings-apprise.webp",
+      "original": "017-settings-apprise.png",
+      "alt": "Settings Apprise",
+      "size": 28558,
+      "originalSize": 58701
+    },
+    {
+      "file": "018-settings-blocklist.webp",
+      "original": "018-settings-blocklist.png",
+      "alt": "Settings Blocklist",
+      "size": 37608,
+      "originalSize": 67631
+    },
+    {
+      "file": "019-settings-cake.webp",
+      "original": "019-settings-cake.png",
+      "alt": "Settings Cake",
+      "size": 31354,
+      "originalSize": 64939
+    },
+    {
+      "file": "020-settings-dhcp.webp",
+      "original": "020-settings-dhcp.png",
+      "alt": "Settings Dhcp",
+      "size": 34918,
+      "originalSize": 68260
+    },
+    {
+      "file": "021-settings-dns.webp",
+      "original": "021-settings-dns.png",
+      "alt": "Settings Dns",
+      "size": 36158,
+      "originalSize": 71080
+    },
+    {
+      "file": "022-settings-dynamic-dns.webp",
+      "original": "022-settings-dynamic-dns.png",
+      "alt": "Settings Dynamic Dns",
+      "size": 21688,
+      "originalSize": 49012
+    },
+    {
+      "file": "023-settings-port-forwarding.webp",
+      "original": "023-settings-port-forwarding.png",
+      "alt": "Settings Port Forwarding",
+      "size": 28860,
+      "originalSize": 52545
+    },
+    {
+      "file": "024-system-charts.webp",
+      "original": "024-system-charts.png",
+      "alt": "System Charts",
+      "size": 40390,
+      "originalSize": 65837
+    },
+    {
+      "file": "025-system-logs.webp",
+      "original": "025-system-logs.png",
+      "alt": "System Logs",
+      "size": 109344,
+      "originalSize": 132234
+    },
+    {
+      "file": "026-system-speedtest.webp",
+      "original": "026-system-speedtest.png",
+      "alt": "System Speedtest",
+      "size": 36276,
+      "originalSize": 65624
+    },
+    {
+      "file": "027-system-system-info.webp",
+      "original": "027-system-system-info.png",
+      "alt": "System System Info",
+      "size": 39580,
+      "originalSize": 61609
+    },
+    {
+      "file": "028-system-worker-status.webp",
+      "original": "028-system-worker-status.png",
+      "alt": "System Worker Status",
+      "size": 24564,
+      "originalSize": 51788
     }
   ]
 }

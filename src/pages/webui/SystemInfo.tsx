@@ -2,7 +2,7 @@ import { MarkdownContent } from '../../components/MarkdownContent';
 
 const systemInfoContent = `# System Info
 
-![System Info Page](../screenshots/010-system-info.webp)
+![System Info Page](/docs/screenshots/010-system-info.webp)
 
 ## Overview
 

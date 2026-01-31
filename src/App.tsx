@@ -26,6 +26,14 @@ const WebUIApprise = lazy(() => import('./pages/webui/Apprise').then(m => ({ def
 const WebUINotifications = lazy(() => import('./pages/webui/Notifications').then(m => ({ default: m.Notifications })));
 const WebUIDns = lazy(() => import('./pages/webui/Dns').then(m => ({ default: m.Dns })));
 const WebUIDhcp = lazy(() => import('./pages/webui/Dhcp').then(m => ({ default: m.Dhcp })));
+const WebUICake = lazy(() => import('./pages/webui/Cake').then(m => ({ default: m.Cake })));
+const WebUIBlocklists = lazy(() => import('./pages/webui/Blocklists').then(m => ({ default: m.Blocklists })));
+const WebUIPortForwarding = lazy(() => import('./pages/webui/PortForwarding').then(m => ({ default: m.PortForwarding })));
+const WebUIDynDns = lazy(() => import('./pages/webui/DynDns').then(m => ({ default: m.DynDns })));
+const WebUIWorkerStatus = lazy(() => import('./pages/webui/WorkerStatus').then(m => ({ default: m.WorkerStatus })));
+const WebUILogs = lazy(() => import('./pages/webui/Logs').then(m => ({ default: m.Logs })));
+const WebUITrafficShaping = lazy(() => import('./pages/webui/TrafficShaping').then(m => ({ default: m.TrafficShaping })));
+const WebUIDocumentation = lazy(() => import('./pages/webui/Documentation').then(m => ({ default: m.Documentation })));
 const SystemConfig = lazy(() => import('./pages/configuration/System').then(m => ({ default: m.SystemConfig })));
 const WanConfig = lazy(() => import('./pages/configuration/Wan').then(m => ({ default: m.WanConfig })));
 const CakeConfig = lazy(() => import('./pages/configuration/Cake').then(m => ({ default: m.CakeConfig })));
@@ -91,6 +99,14 @@ function App() {
             <Route path="/webui/notifications" element={<WebUINotifications />} />
             <Route path="/webui/dns" element={<WebUIDns />} />
             <Route path="/webui/dhcp" element={<WebUIDhcp />} />
+            <Route path="/webui/cake" element={<WebUICake />} />
+            <Route path="/webui/blocklists" element={<WebUIBlocklists />} />
+            <Route path="/webui/port-forwarding" element={<WebUIPortForwarding />} />
+            <Route path="/webui/dyndns" element={<WebUIDynDns />} />
+            <Route path="/webui/worker-status" element={<WebUIWorkerStatus />} />
+            <Route path="/webui/logs" element={<WebUILogs />} />
+            <Route path="/webui/traffic-shaping" element={<WebUITrafficShaping />} />
+            <Route path="/webui/documentation" element={<WebUIDocumentation />} />
             <Route path="/configuration" element={<Configuration />} />
             <Route path="/configuration/system" element={<SystemConfig />} />
             <Route path="/configuration/wan" element={<WanConfig />} />

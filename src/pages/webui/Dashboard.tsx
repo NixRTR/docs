@@ -2,7 +2,7 @@ import { MarkdownContent } from '../../components/MarkdownContent';
 
 const dashboardContent = `# Dashboard
 
-![Dashboard](../screenshots/002-dashboard.webp)
+![Dashboard](/docs/screenshots/002-dashboard.webp)
 
 ## Overview
 

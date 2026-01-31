@@ -2,9 +2,9 @@ import { MarkdownContent } from '../../components/MarkdownContent';
 
 const navigationContent = `# Navigation
 
-![Sidebar](../screenshots/003-sidebar.webp)
+![Sidebar](/docs/screenshots/003-sidebar.webp)
 
-![Dark Mode](../screenshots/011-dark-mode.webp)
+![Dark Mode](/docs/screenshots/011-dark-mode.webp)
 
 ## Overview
 
@@ -37,21 +37,36 @@ The sidebar provides navigation to all major sections of the WebUI.
 
 ### Navigation Items
 
-**Main Sections**:
-- **Dashboard**: Overview of system status and resources
-- **Network**: Network bandwidth monitoring and charts
-- **Devices**: View and manage connected devices
-- **Device Usage**: Per-device bandwidth statistics
-- **System**: System resource monitoring with historical charts
-- **Speedtest**: Internet speed testing and results
-- **Apprise**: Send notifications to 80+ services (shown when Apprise is enabled)
-- **Notifications**: Automated alert rules based on monitored parameters (shown when Apprise is enabled)
+The sidebar groups items into **Network**, **System**, and **Settings** (config). Paths below are the WebUI app paths (e.g. \`/settings/dns\`), not the documentation site paths (e.g. \`/webui/dns\`).
 
-**System Section**:
-- **System Info**: Detailed system information and configuration
+**Network** (expandable):
+- **Charts**: Network bandwidth monitoring and per-interface charts (\`/network\`)
+- **Devices**: View and manage connected devices (\`/devices\`)
+- **Usage**: Per-device bandwidth statistics (\`/device-usage\`)
+
+**System** (expandable):
+- **Charts**: System resource monitoring with historical charts (\`/system\`)
+- **Worker Status**: Celery worker and task status (\`/settings/worker-status\`)
+- **Speedtest**: Internet speed testing and results (\`/speedtest\`)
+- **System Info**: Detailed system information and configuration (\`/system-info\`)
+- **Logs**: System and application logs (\`/system/logs\`)
+
+**Settings** (expandable) — configuration management:
+- **CAKE**: View and configure CAKE traffic shaping (\`/settings/cake\`)
+- **DHCP**: Configure DHCP networks and static reservations (\`/settings/dhcp\`)
+- **DNS**: Configure DNS zones and records (\`/settings/dns\`)
+- **Blocklists**: Manage blocklists and whitelist per network (\`/settings/blocklists-whitelist\`)
+- **Port Forwarding**: Manage port forwarding rules (\`/settings/port-forwarding\`)
+- **Dynamic DNS**: Configure DynDns providers (\`/settings/dyndns\`)
+- **Apprise**: Manage notification services (\`/settings/apprise\`) — shown when Apprise is enabled
+
+**Other**:
+- **Dashboard**: Overview of system status and resources (\`/dashboard\`)
+- **Notifications**: Automated alert rules and send test notifications (\`/notifications\`) — shown when Apprise is enabled
+- **Traffic Shaping**: Traffic shaping overview (\`/traffic-shaping\`)
 
 **External Links**:
-- **Documentation**: Opens the documentation site in a new tab
+- **Documentation**: Opens this documentation site in a new tab
 - **GitHub**: Link to the project repository with star/fork counts
 - **Issues**: Link to GitHub issues page
 

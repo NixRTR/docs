@@ -2,7 +2,7 @@ import { MarkdownContent } from '../../components/MarkdownContent';
 
 const deviceUsageContent = `# Device Usage
 
-![Device Usage Page](../screenshots/006-device-usage.webp)
+![Device Usage Page](/docs/screenshots/006-device-usage.webp)
 
 ## Overview
 

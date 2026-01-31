@@ -2,7 +2,7 @@ import { MarkdownContent } from '../../components/MarkdownContent';
 
 const devicesContent = `# Devices
 
-![Devices Page](../screenshots/005-devices.webp)
+![Devices Page](/docs/screenshots/005-devices.webp)
 
 ## Overview
 

@@ -2,7 +2,7 @@ import { MarkdownContent } from '../../components/MarkdownContent';
 
 const systemContent = `# System
 
-![System Page](../screenshots/008-system.webp)
+![System Page](/docs/screenshots/008-system.webp)
 
 ## Overview
 

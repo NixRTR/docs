@@ -2,7 +2,7 @@ import { MarkdownContent } from '../../components/MarkdownContent';
 
 const speedtestContent = `# Speedtest
 
-![Speedtest Page](../screenshots/009-speedtest.webp)
+![Speedtest Page](/docs/screenshots/009-speedtest.webp)
 
 ## Overview
 
