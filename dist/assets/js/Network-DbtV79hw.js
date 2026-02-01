@@ -1,6 +1,6 @@
 import{j as e}from"./ui-vendor-CtbJYEGA.js";import{M as t}from"./MarkdownContent-C36B4BtH.js";import"./react-vendor-ZjkKMkft.js";import"./markdown-vendor-_zLkdjX1.js";const a=`# Network
 
-![Network Page](/docs/screenshots/004-network.webp)
+![Network Page](/docs/screenshots/007-network-charts.webp)
 
 ## Overview
 

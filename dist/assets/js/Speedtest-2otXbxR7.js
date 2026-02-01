@@ -1,6 +1,6 @@
 import{j as e}from"./ui-vendor-CtbJYEGA.js";import{M as t}from"./MarkdownContent-C36B4BtH.js";import"./react-vendor-ZjkKMkft.js";import"./markdown-vendor-_zLkdjX1.js";const s=`# Speedtest
 
-![Speedtest Page](/docs/screenshots/009-speedtest.webp)
+![Speedtest Page](/docs/screenshots/026-system-speedtest.webp)
 
 ## Overview
 

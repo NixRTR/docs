@@ -1,6 +1,6 @@
 import{j as e}from"./ui-vendor-CtbJYEGA.js";import{M as t}from"./MarkdownContent-C36B4BtH.js";import"./react-vendor-ZjkKMkft.js";import"./markdown-vendor-_zLkdjX1.js";const s=`# System
 
-![System Page](/docs/screenshots/008-system.webp)
+![System Page](/docs/screenshots/024-system-charts.webp)
 
 ## Overview
 

@@ -1,8 +1,8 @@
 import{j as e}from"./ui-vendor-CtbJYEGA.js";import{M as t}from"./MarkdownContent-C36B4BtH.js";import"./react-vendor-ZjkKMkft.js";import"./markdown-vendor-_zLkdjX1.js";const s=`# Navigation
 
-![Sidebar](/docs/screenshots/003-sidebar.webp)
+![Sidebar](/docs/screenshots/003-menu.webp)
 
-![Dark Mode](/docs/screenshots/011-dark-mode.webp)
+![Dark Mode](/docs/screenshots/002-dark-mode.webp)
 
 ## Overview
 

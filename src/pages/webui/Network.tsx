@@ -2,7 +2,7 @@ import { MarkdownContent } from '../../components/MarkdownContent';
 
 const networkContent = `# Network
 
-![Network Page](/docs/screenshots/004-network.webp)
+![Network Page](/docs/screenshots/007-network-charts.webp)
 
 ## Overview
 

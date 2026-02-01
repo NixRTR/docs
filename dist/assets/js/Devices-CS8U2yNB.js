@@ -1,6 +1,6 @@
 import{j as e}from"./ui-vendor-CtbJYEGA.js";import{M as t}from"./MarkdownContent-C36B4BtH.js";import"./react-vendor-ZjkKMkft.js";import"./markdown-vendor-_zLkdjX1.js";const s=`# Devices
 
-![Devices Page](/docs/screenshots/005-devices.webp)
+![Devices Page](/docs/screenshots/010-network-devices.webp)
 
 ## Overview
 

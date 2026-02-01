@@ -2,9 +2,9 @@ import { MarkdownContent } from '../../components/MarkdownContent';
 
 const navigationContent = `# Navigation
 
-![Sidebar](/docs/screenshots/003-sidebar.webp)
+![Sidebar](/docs/screenshots/003-menu.webp)
 
-![Dark Mode](/docs/screenshots/011-dark-mode.webp)
+![Dark Mode](/docs/screenshots/002-dark-mode.webp)
 
 ## Overview
 

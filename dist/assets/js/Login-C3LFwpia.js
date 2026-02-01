@@ -1,6 +1,6 @@
 import{j as e}from"./ui-vendor-CtbJYEGA.js";import{M as s}from"./MarkdownContent-C36B4BtH.js";import"./react-vendor-ZjkKMkft.js";import"./markdown-vendor-_zLkdjX1.js";const o=`# Login
 
-![Login Page](/docs/screenshots/001-Login.webp)
+![Login Page](/docs/screenshots/001-dashboard.webp)
 
 ## Overview
 

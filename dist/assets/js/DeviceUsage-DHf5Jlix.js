@@ -1,6 +1,6 @@
 import{j as e}from"./ui-vendor-CtbJYEGA.js";import{M as t}from"./MarkdownContent-C36B4BtH.js";import"./react-vendor-ZjkKMkft.js";import"./markdown-vendor-_zLkdjX1.js";const a=`# Device Usage
 
-![Device Usage Page](/docs/screenshots/006-device-usage.webp)
+![Device Usage Page](/docs/screenshots/014-network-usage-table.webp)
 
 ## Overview
 

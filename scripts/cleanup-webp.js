@@ -14,7 +14,7 @@ try {
 
   // Read all files in the screenshots directory
   const files = readdirSync(screenshotsDir);
-  
+
   // Filter to only WebP files (exclude originals, README.md, manifest.json, etc.)
   const webpFiles = files.filter(file => {
     return extname(file).toLowerCase() === '.webp';
@@ -42,4 +42,3 @@ try {
   // Don't fail the build if cleanup fails
   process.exit(0);
 }
-
